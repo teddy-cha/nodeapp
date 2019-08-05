@@ -1,3 +1,7 @@
+CREATE DATABASE nodeapp;
+
+USE nodeapp;
+
 DROP TABLE if exists likes;
 DROP TABLE if exists articles;
 DROP TABLE if exists users;
