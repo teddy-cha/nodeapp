@@ -10,21 +10,21 @@ router.get('/', function(req, res, next) {
   res.send('respond with a resource!!');
 });
 
-router.all('*', function(req, res, next) {
-  if (externalApiEndpoint == "-") {
-    return next();
-  }
-  rp({url: externalApiEndpoint, forever: true})
-    .then((body) => {
-      if (String(body).trim() == externalApiResponse) {
-        next();
-      } else {
-        res.send(500, `Status is not ${externalApiResponse}, but ${body}`);
-      }
-    })
-    .catch((err) => next(err))
-  ;
-});
+// router.all('*', function(req, res, next) {
+//   if (externalApiEndpoint == "-") {
+//     return next();
+//   }
+//   rp({url: externalApiEndpoint, forever: true})
+//     .then((body) => {
+//       if (String(body).trim() == externalApiResponse) {
+//         next();
+//       } else {
+//         res.send(500, `Status is not ${externalApiResponse}, but ${body}`);
+//       }
+//     })
+//     .catch((err) => next(err))
+//   ;
+// });
 
 router.get("/status", (req, res) => res.send("OK\n"));
 
